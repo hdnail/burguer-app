@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  burguer-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: "burguer-app"
+    container_name: "burguer-app"
+    volumes:
+      - "./app:/app"
+    ports:
+      - 3028:3000
+    stdin_open: true
