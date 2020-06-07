@@ -8,6 +8,7 @@ services:
     container_name: "burguer-app"
     volumes:
       - "./app:/app"
+      - "./apps:/apps"
     ports:
       - 3028:3000
     stdin_open: true

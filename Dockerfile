@@ -7,4 +7,5 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 VOLUME "/app"
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
+CMD ["tail", "-f", "/dev/stdout"]
