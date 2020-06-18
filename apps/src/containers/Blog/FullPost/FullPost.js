@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './FullPost.css';
-import axios from 'axios';
+import axios from '../../../axios';
 
 class FullPost extends Component {
 
@@ -15,9 +15,9 @@ class FullPost extends Component {
             });
     }
 
-    componentDidUpdate() {
-        if (this.props.id && (this.state.post == null || this.state.post.id !== this.props.id)) {
-            axios.get('/posts/' + this.props.id)
+    loadData = () => {
+        if (this.props.match.params.id && (this.state.post == null || this.state.post.id !== +this.props.match.params.id)) {
+            axios.get('/posts/' + this.props.match.params.id)
                 .then(response => {
                     this.setState({
                         post: response.data
@@ -26,9 +26,16 @@ class FullPost extends Component {
         }
     }
 
-    render () {
+    componentDidMount() {
+        this.loadData();
+    }
 
-        if (this.props.id == null) {
+    componentDidUpdate() {
+        this.loadData();
+    }
+
+    render () {
+        if (this.props.match.params.id == null) {
             return (
                 <p style={{textAlign:'center'}}>Please select a Post!</p>
             );
