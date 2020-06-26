@@ -3,6 +3,7 @@ import classes from './Burguer.module.css';
 import BurguerIngredient from './BurguerIngredient/BurguerIngredient';
 
 const burguer = (props) => {
+  
   const transformedIngredients = Object.keys(props.ingredients)
     .map(
       (igKey) => {
